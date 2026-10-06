@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Distance Vector Routing Simulator</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Distance Vector Routing Simulator</h1>
+  <p>Software simulation of the Distance Vector (Bellman-Ford) routing algorithm</p>
+</header>
+
+<main>
+
+  <!-- Left Side Controls -->
+  <div style="display:grid; gap:16px; align-content:start;">
+
+    <!-- Build Network -->
+    <section>
+      <h2>1. Build the network</h2>
+
+      <div class="row">
+        <button id="addRouter">Add router</button>
+        <button id="sample" class="alt">Load sample network</button>
+        <button id="clearAll" class="danger">Clear all</button>
+      </div>
+
+      <div class="row">
+        <select id="linkA" aria-label="Router 1"></select>
+
+        <select id="linkB" aria-label="Router 2"></select>
+
+        <input
+          id="linkW"
+          type="number"
+          min="1"
+          value="1"
+          aria-label="Link cost"
+        >
+
+        <button id="addLink">Add link</button>
+      </div>
+
+      <ul id="linkList"></ul>
+    </section>
+
+
+    <!-- Run Algorithm -->
+    <section>
+      <h2>2. Run the algorithm</h2>
+
+      <div class="row">
+        <button id="step">Next round</button>
+        <button id="run">Run until stable</button>
+        <button id="reset" class="alt">Reset tables</button>
+      </div>
+
+      <p id="status">Round 0</p>
+    </section>
+
+
+    <!-- Shortest Path -->
+    <section>
+      <h2>3. Shortest path</h2>
+
+      <div class="row">
+        <select id="src" aria-label="Source"></select>
+
+        <select id="dst" aria-label="Destination"></select>
+
+        <button id="findPath">Find path</button>
+      </div>
+
+      <p id="pathResult"></p>
+    </section>
+
+
+    <!-- Event Log -->
+    <section>
+      <h2>Event log</h2>
+
+      <p id="log"></p>
+    </section>
+
+  </div>
+
+
+  <!-- Network Topology -->
+  <section>
+    <h2>Network topology</h2>
+
+    <svg
+      id="graph"
+      viewBox="0 0 600 420"
+      role="img"
+      aria-label="Network topology">
+    </svg>
+  </section>
+
+
+  <!-- Routing Tables -->
+  <section class="full">
+
+    <h2>Routing tables (Destination, Distance, Next Hop)</h2>
+
+    <div id="tables" class="tables"></div>
+
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
